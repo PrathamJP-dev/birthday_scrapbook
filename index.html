@@ -2,299 +2,754 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="robots" content="noindex">
-  <title>Happy Birthday</title>
+    <!-- =========================
+         BASIC PAGE SETTINGS
+    ========================== -->
+    <meta charset="utf-8">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nunito:wght@600;800&display=swap">
-  <link rel="stylesheet" href="style.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Happy Birthday</title>
+
+    <meta name="robots" content="noindex">
+
+
+    <!-- =========================
+         GOOGLE FONTS
+    ========================== -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nunito:wght@600;800&display=swap">
+
+
+    <!-- =========================
+         YOUR CSS
+    ========================== -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
-  <!--
-    HOW TO EDIT THIS FILE
-    ---------------------
-    1. Text: search for the "EDIT TEXT" comments and change the words next to them.
-    2. Photos: put files in the /images folder named photo1.jpg ... photo10.jpg.
-       If a photo file is missing, the emoji / meme card shows instead.
-    3. Name and password (birthdate hash): config.js
-    4. Colours and fonts: style.css
-  -->
+
+<!-- =====================================================
+     🔐 BIRTHDAY LOCK / PASSWORD SCREEN
+===================================================== -->
+
+<section id="lock">
+
+    <!-- Decorative bubbles -->
+    <div class="bb"
+         style="width:140px; height:140px; left:-40px; top:8%;">
+    </div>
+
+    <div class="bb"
+         style="width:90px; height:90px; right:8%; bottom:10%;">
+    </div>
+
+    <div class="bb"
+         style="width:60px; height:60px; right:12%; top:12%;">
+    </div>
 
 
-  <!-- ====================================================== -->
-  <!-- LOCK SCREEN (shown first, asks for the birthdate)      -->
-  <!-- ====================================================== -->
-  <section id="lock">
-
-    <!-- decorative bubbles -->
-    <div class="bb" style="width:140px; height:140px; left:-40px; top:8%"></div>
-    <div class="bb" style="width:90px; height:90px; right:8%; bottom:10%"></div>
-    <div class="bb" style="width:60px; height:60px; right:12%; top:12%"></div>
-
+    <!-- Lock Card -->
     <div class="card" id="box">
 
-      <!-- smiley face (drawn with CSS) -->
-      <div class="smile" aria-hidden="true"><i></i><i></i><b></b></div>
+        <!-- Birthday Photo -->
+<div class="lock-photo">
+    <img
+        src="images/Cute Penguin with Heart Balloons _ Kawaii Love Art.jpg"
+        alt="Birthday photo">
+</div>
 
-      <!-- EDIT TEXT: lock screen title and hint -->
-      <h1 class="hand">BLUE<br>BIRTHDAY</h1>
-      <p class="sub">Enter your birthdate to open the surprise</p>
 
-      <!-- birthdate inputs (ids dd / mm / yy are used by script.js, don't rename) -->
-      <div class="dob">
-        <label for="dd">Day
-          <input id="dd" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="off">
-        </label>
-        <label for="mm">Month
-          <input id="mm" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="off">
-        </label>
-        <label for="yy">Year
-          <input id="yy" inputmode="numeric" maxlength="4" placeholder="YYYY" autocomplete="off">
-        </label>
-      </div>
+        <!-- Main Heading -->
+        <h1 class="hand">
+            A Little Surprise<br>
+            Just For YOU
+        </h1>
 
-      <button id="go" type="button">Open</button>
-      <div class="msg" id="msg" role="status"></div>
+
+        <!-- Subtitle -->
+        <p class="sub">
+            Enter your birthdate to open the surprise!
+        </p>
+
+
+        <!-- =========================
+             DATE OF BIRTH INPUT
+        ========================== -->
+
+        <div class="dob">
+
+            <label for="dd">
+                Day
+                <input
+                    id="dd"
+                    inputmode="numeric"
+                    maxlength="2"
+                    placeholder="DD"
+                    autocomplete="off">
+            </label>
+
+
+            <label for="mm">
+                Month
+                <input
+                    id="mm"
+                    inputmode="numeric"
+                    maxlength="2"
+                    placeholder="MM"
+                    autocomplete="off">
+            </label>
+
+
+            <label for="yy">
+                Year
+                <input
+                    id="yy"
+                    inputmode="numeric"
+                    maxlength="4"
+                    placeholder="YYYY"
+                    autocomplete="off">
+            </label>
+
+        </div>
+
+
+        <!-- Open Button -->
+        <button id="go" type="button">
+            Open
+        </button>
+
+
+        <!-- Error / Status Message -->
+        <div
+            class="msg"
+            id="msg"
+            role="status">
+        </div>
 
     </div>
-  </section>
+
+</section>
 
 
-  <!-- ====================================================== -->
-  <!-- MAIN SITE (hidden until the right birthdate is entered) -->
-  <!-- ====================================================== -->
-  <main id="site">
+
+<!-- =====================================================
+     🎂 MAIN BIRTHDAY WEBSITE
+===================================================== -->
+
+<main id="site">
 
 
-    <!-- ---------- SLIDE 1: Hero (blue) ---------- -->
+    <!-- =================================================
+         SECTION 1 — INTRODUCTION
+    ================================================== -->
+
     <section class="slide s1">
 
-      <div class="bb" style="width:120px; height:120px; right:-30px; top:30px"></div>
-      <div class="bb" style="width:70px; height:70px; left:6%; bottom:40px"></div>
-
-      <div class="in">
-
-        <div>
-          <h2 class="t hand">BLUE<br>BIRTHDAY</h2>
-          <!-- EDIT TEXT -->
-          <p>Happy Birthday, <b id="nm"></b>! Scroll down, there is a whole little scrapbook made for you.</p>
+        <!-- Decorative bubbles -->
+        <div class="bb"
+             style="width:120px; height:120px; right:-30px; top:30px;">
         </div>
 
-        <!-- PHOTO 1 -->
-        <div class="ph r" style="aspect-ratio:4/5; flex-direction:column">
-          <span class="e">🎂</span>
-          <span class="lb">🎈 Happy Birthday 🎈</span>
-          <img src="images/photo1.jpg" alt="" onerror="this.remove()">
+        <div class="bb"
+             style="width:70px; height:70px; left:6%; bottom:40px;">
         </div>
 
-      </div>
+
+        <div class="in">
+
+            <!-- Text -->
+            <div>
+
+                <h2 class="t hand">
+                    Happy<br>
+                    BIRTHDAY
+                </h2>
+
+                <p>
+                    Happy Birthday,
+                    <b id="nm"></b>!
+                    Scroll down, there is a whole little scrapbook
+                    made for you.
+                </p>
+
+            </div>
+
+
+            <!-- Photo / Birthday Card -->
+            <div
+                class="ph r"
+                style="aspect-ratio:4/5; flex-direction:column;">
+
+                <span class="e">
+                    🎂
+                </span>
+
+                <span class="lb">
+                    🎈 Happy Birthday 🎈
+                </span>
+
+                <!-- Replace with your photo -->
+                <img
+                    src="images/💜 Lavender Flower Cake _ Elegant Floral BirthdayCakeInspiration.jpg"
+                    alt=""
+                    onerror="this.remove()">
+
+            </div>
+
+        </div>
+
     </section>
 
 
-    <!-- ---------- SLIDE 2: Age (cream) ---------- -->
+
+    <!-- =================================================
+         SECTION 2 — AGE
+    ================================================== -->
+
     <section class="slide s2">
 
-      <div class="bb" style="width:100px; height:100px; left:-20px; top:20px; background:var(--blue)"></div>
-
-      <div class="in">
-
-        <!-- big age circle (number is filled in by script.js) -->
-        <div class="age">
-          <div class="n hand" id="age">22</div>
-          <div class="hand" style="font-size:26px; color:var(--ink)">years old</div>
+        <!-- Decorative bubble -->
+        <div class="bb"
+             style="width:100px;
+                    height:100px;
+                    left:-20px;
+                    top:20px;
+                    background:var(--blue);">
         </div>
 
-        <div>
-          <!-- "HELLO, TWENTY-TWO" (the age word and caption are filled in by script.js) -->
-          <h2 class="t hand">HELLO,<br><span id="ageword"></span></h2>
-          <p id="cap"></p>
-          <!-- EDIT TEXT: the date line -->
-          <p>Saturday, 17 October 2026</p>
+
+        <div class="in">
+
+            <!-- Age -->
+            <div class="age">
+
+                <div class="n hand" id="age">
+                    22
+                </div>
+
+                <div
+                    class="hand"
+                    style="font-size:26px;
+                           color:var(--ink);">
+
+                    Yaa...but tu merese fir bhi CHHOTI hai :]
+
+                </div>
+
+            </div>
+
+
+            <!-- Birthday Text -->
+            <div>
+
+                <h2 class="t hand">
+                    You'r<br>
+                    <span id="ageword"></span>
+                    Now<br>
+                </h2>
+
+                <p id="cap"></p>
+
+                <p>
+                    Saturday, 17 October 2026
+                </p>
+
+            </div>
+
         </div>
 
-      </div>
     </section>
 
 
-    <!-- ---------- SLIDE 3: Wishlist (slate) ---------- -->
+
+    <!-- =================================================
+         SECTION 3 — WISHLIST
+    ================================================== -->
+
     <section class="slide s3">
 
-      <div class="bb" style="width:90px; height:90px; right:6%; top:30px; opacity:.15"></div>
+        <!-- Decorative bubble -->
+        <div class="bb"
+             style="width:90px;
+                    height:90px;
+                    right:6%;
+                    top:30px;
+                    opacity:.15;">
+        </div>
 
-      <div class="in">
-        <div>
 
-          <h2 class="t hand">WISHLIST</h2>
+        <div class="in">
 
-          <!-- EDIT TEXT: 4 wishes. Big handwritten line = the wish, plain text after it = small note -->
-          <div class="wl" style="margin-top:20px">
-            <div><span class="hand">A giant cake</span>with extra frosting</div>
-            <div><span class="hand">Endless snacks</span>and zero diets today</div>
-            <div><span class="hand">Good vibes only</span>and loud laughter</div>
-            <div><span class="hand">A day off from adulting</span>cartoons and chill</div>
-          </div>
+            <div>
+
+                <h2 class="t hand">
+                    From A Well Wisher
+                </h2>
+
+
+                <!-- Wishlist Items -->
+                <div
+                    class="wl"
+                    style="margin-top:20px;">
+
+                    <div>
+                        <span class="hand">
+                            May umcoming years be
+                        </span>
+                        extra happier 
+                    </div>
+
+
+                    <div>
+                        <span class="hand">
+                            Hoping endless success
+                        </span>
+                        and zero regrets
+                    </div>
+
+
+                    <div>
+                        <span class="hand">
+                            Good vibes only
+                        </span>
+                        and loud laughter
+                    </div>
+
+
+                    <div>
+                        <span class="hand">
+                            A day off from adulting
+                        </span>
+                        relax and enjoy your day
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
-      </div>
+
     </section>
 
 
-    <!-- ---------- SLIDE 4: Note (blue) ---------- -->
+
+    <!-- =================================================
+         SECTION 4 — PERSONAL NOTE
+    ================================================== -->
+
     <section class="slide s4">
 
-      <div class="bb" style="width:110px; height:110px; right:-20px; bottom:30px"></div>
-
-      <div class="in">
-
-        <!-- PHOTO 2 (arch shape) -->
-        <div class="ph arch cart" style="max-width:300px; flex-direction:column">
-          <span class="e">🐻</span>
-          <span class="lb">"Happy bday, Nidhi!"</span>
-          <span style="font-size:40px">🎁🎈</span>
-          <img src="images/photo2.jpg" alt="" onerror="this.remove()">
+        <!-- Decorative bubble -->
+        <div class="bb"
+             style="width:110px;
+                    height:110px;
+                    right:-20px;
+                    bottom:30px;">
         </div>
 
-        <div>
-          <h2 class="t hand">A NOTE<br>FOR YOU</h2>
-          <!-- EDIT TEXT: your personal message -->
-          <p>Another year, another excuse to eat cake. Wishing you laughter, great food and everything you are hoping for this year.</p>
+
+        <div class="in">
+
+            <!-- Photo -->
+            <div
+                class="ph arch cart"
+                style="max-width:300px;
+                       flex-direction:column;">
+
+                <span class="e">
+                    🐻
+                </span>
+
+                <span class="lb">
+                    "Happy bday, Nidhi!"
+                </span>
+
+                <span style="font-size:40px;">
+                    🎁🎈
+                </span>
+
+                <!-- Replace with photo2 -->
+                <img
+                    src="images/WhatsApp Image 2026-10-16 at 3.18.44 PM.jpeg"
+                    alt=""
+                    onerror="this.remove()">
+
+            </div>
+
+
+            <!-- Note -->
+            <div>
+
+                <h2 class="t hand">
+                    A NOTE<br>
+                    FOR YOU
+                </h2>
+
+                <p>
+                    No matter how often we talk, No matter how distinct we are,
+                    But you are the one whom I always choose. And this Message is just 
+                    for you , to know that YOUR ARE SPEACIAL !!!
+                    Just remember one thing there is also person in this world you admires
+                    you...
+                    jyada English ho gaya lgta h...
+                    I just wanted you to feel speacial...
+                    COZ YOU DESERVE EVERTHING....
+                    
+                </p>
+
+            </div>
+
         </div>
 
-      </div>
     </section>
 
 
-    <!-- ---------- SLIDE 5: Quote (slate) ---------- -->
+
+    <!-- =================================================
+         SECTION 5 — QUOTE
+    ================================================== -->
+
     <section class="slide s5">
-      <div class="in" style="flex-direction:column">
 
-        <!-- PHOTO 3 (round) -->
-        <div class="ph c" style="width:200px; flex:none">
-          <span class="e">🥳</span>
-          <img src="images/photo3.jpg" alt="" onerror="this.remove()">
+        <div
+            class="in"
+            style="flex-direction:column;">
+
+            <!-- Photo -->
+            <div
+                class="ph c"
+                style="width:200px; flex:none;">
+
+                <span class="e">
+                    🥳
+                </span>
+
+                <!-- Replace with photo3 -->
+                <img
+                    src="images/Skyblue theme cake🎂.jpg"
+                    alt=""
+                    onerror="this.remove()">
+
+            </div>
+
+
+            <!-- Quote -->
+            <div class="q hand">
+                "Party Degi to mana nhi karunga.."
+            </div>
+
         </div>
 
-        <!-- EDIT TEXT: quote -->
-        <div class="q hand">"Today is your day. Eat the cake first."</div>
-
-      </div>
     </section>
 
 
-    <!-- ---------- SLIDE 6: Row of three photos (cream) ---------- -->
+
+    <!-- =================================================
+         SECTION 6 — CAKE GALLERY
+    ================================================== -->
+
     <section class="slide s6">
-      <div class="in">
 
-        <h2 class="t hand" style="flex:1 1 100%; text-align:center">BLUE BIRTHDAY</h2>
+        <div class="in">
 
-        <div class="row">
+            <!-- Heading -->
+            <h2
+                class="t hand"
+                style="flex:1 1 100%;
+                       text-align:center;">
+                1 2 3 4 MADAM JI ki jay jay kar !! 
+            </h2>
 
-          <!-- PHOTO 4 -->
-          <div class="ph r sm" style="flex-direction:column">
-            <span class="e">🍰</span>
-            <span class="lb">the slice</span>
-            <img src="images/photo4.jpg" alt="" onerror="this.remove()">
-          </div>
 
-          <!-- PHOTO 5 -->
-          <div class="ph r sm" style="flex-direction:column">
-            <span class="e">🧁</span>
-            <span class="lb">the cupcake</span>
-            <img src="images/photo5.jpg" alt="" onerror="this.remove()">
-          </div>
+            <!-- Cake Photos -->
+            <div class="row">
 
-          <!-- PHOTO 6 -->
-          <div class="ph r sm" style="flex-direction:column">
-            <span class="e">🎂</span>
-            <span class="lb">the big one</span>
-            <img src="images/photo6.jpg" alt="" onerror="this.remove()">
-          </div>
+
+                <!-- Cake 1 -->
+                <div
+                    class="ph r sm"
+                    style="flex-direction:column;">
+
+                    <span class="e">
+                        🍰
+                    </span>
+
+                    <span class="lb">
+                        the slice
+                    </span>
+
+                    <img
+                        src="images/948922583961299487.jpg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+
+                <!-- Cake 2 -->
+                <div
+                    class="ph r sm"
+                    style="flex-direction:column;">
+
+                    <span class="e">
+                        🧁
+                    </span>
+
+                    <span class="lb">
+                        the cupcake
+                    </span>
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-16 at 3.17.15 PM.jpeg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+
+                <!-- Cake 3 -->
+                <div
+                    class="ph r sm"
+                    style="flex-direction:column;">
+
+                    <span class="e">
+                        🎂
+                    </span>
+
+                    <span class="lb">
+                        the big one
+                    </span>
+
+                    <img
+                        src="images/1136877499709226077.jpg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+            </div>
+
+
+            <!-- Caption -->
+            <p
+                style="flex:1 1 100%;
+                       text-align:center;">
+
+               Do What you LOVE and LOVE What you Do
+
+            </p>
 
         </div>
 
-        <!-- EDIT TEXT: caption under the row -->
-        <p style="flex:1 1 100%; text-align:center">Cake, cake and more cake.</p>
-
-      </div>
     </section>
 
 
-    <!-- ---------- SLIDE 7: 2x2 grid of memes / photos (blue) ---------- -->
+
+    <!-- =================================================
+         SECTION 7 — MEMORIES / MEMES
+    ================================================== -->
+
     <section class="slide s7">
 
-      <div class="bb" style="width:100px; height:100px; left:-20px; top:30px"></div>
+        <!-- Decorative bubble -->
+        <div class="bb"
+             style="width:100px;
+                    height:100px;
+                    left:-20px;
+                    top:30px;">
+        </div>
 
-      <div class="in">
 
-        <div class="g4">
+        <div class="in">
 
-          <!-- PHOTO 7 (meme: top text, emoji, bottom text) -->
-          <div class="ph r meme">
-            <span class="mt">Me: it's my birthday</span>
-            <span class="e">😋</span>
-            <span class="mt">Also me: cake first</span>
-            <img src="images/photo7.jpg" alt="" onerror="this.remove()">
-          </div>
 
-          <!-- PHOTO 8 -->
-          <div class="ph r meme">
-            <span class="mt">New age unlocked</span>
-            <span class="e">🔓</span>
-            <span class="mt">Level 22 begins</span>
-            <img src="images/photo8.jpg" alt="" onerror="this.remove()">
-          </div>
+            <!-- =========================
+                 MEME / PHOTO GRID
+            ========================== -->
 
-          <!-- PHOTO 9 -->
-          <div class="ph r meme">
-            <span class="mt">Nidhi: I'm still 12</span>
-            <span class="e">😏</span>
-            <span class="mt">The calendar: 22</span>
-            <img src="images/photo9.jpg" alt="" onerror="this.remove()">
-          </div>
+            <div class="g4">
 
-          <!-- PHOTO 10 (cartoon) -->
-          <div class="ph r cart" style="flex-direction:column">
-            <span class="e">🐰</span>
-            <span class="lb">"More cake pls!"</span>
-            <img src="images/photo10.jpg" alt="" onerror="this.remove()">
-          </div>
+
+                <!-- Meme 1 -->
+                <div class="ph r meme">
+
+                    <span class="mt">
+                        Me: it's my birthday
+                    </span>
+
+                    <span class="e">
+                        😋
+                    </span>
+
+                    <span class="mt">
+                        Also me: cake first
+                    </span>
+
+                    <img
+                        src="images/531143349828541437.jpg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+
+                <!-- Meme 2 -->
+                <div class="ph r meme">
+
+                    <span class="mt">
+                        New age unlocked
+                    </span>
+
+                    <span class="e">
+                        🔓
+                    </span>
+
+                    <span class="mt">
+                        Level 22 begins
+                    </span>
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-16 at 3.17.16 PM.jpeg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+
+                <!-- Meme 3 -->
+                <div class="ph r meme">
+
+                    <span class="mt">
+                        Nidhi: I'm still 12
+                    </span>
+
+                    <span class="e">
+                        😏
+                    </span>
+
+                    <span class="mt">
+                        The calendar: 22
+                    </span>
+
+                    <img
+                        src="images/739434832580750854.jpg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+
+                <!-- Meme 4 -->
+                <div
+                    class="ph r cart"
+                    style="flex-direction:column;">
+
+                    <span class="e">
+                        🐰
+                    </span>
+
+                    <span class="lb">
+                        "More cake pls!"
+                    </span>
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-16 at 3.17.17 PM.jpeg"
+                        alt=""
+                        onerror="this.remove()">
+
+                </div>
+
+            </div>
+
+
+            <!-- Memories Text -->
+            <div>
+
+                <h2 class="t hand">
+                    
+                </h2>
+
+                <p>
+                   
+                </p>
+
+            </div>
 
         </div>
 
-        <div>
-          <h2 class="t hand">MEMORIES</h2>
-          <!-- EDIT TEXT -->
-          <p>Memes, cartoons and cake: the only memories that really matter.</p>
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL SECTION — THANK YOU
+    ================================================== -->
+
+    <section
+        class="slide s3"
+        style="min-height:70vh;">
+
+        <!-- Decorative bubbles -->
+        <div class="bb"
+             style="width:80px;
+                    height:80px;
+                    left:10%;
+                    top:40px;
+                    opacity:.15;">
         </div>
 
-      </div>
+        <div class="bb"
+             style="width:120px;
+                    height:120px;
+                    right:8%;
+                    bottom:30px;
+                    opacity:.15;">
+        </div>
+
+
+        <!-- Final Message -->
+        <div
+            class="in"
+            style="flex-direction:column;
+                   text-align:center;">
+
+            <h2 class="t hand">
+                THANK YOU
+            </h2>
+
+            <p>
+                for being you.
+                Happy Birthday,
+                <span id="nm2"></span>.
+            </p>
+
+        </div>
+
     </section>
 
 
-    <!-- ---------- SLIDE 8: Thank you (slate) ---------- -->
-    <section class="slide s3" style="min-height:70vh">
-
-      <div class="bb" style="width:80px; height:80px; left:10%; top:40px; opacity:.15"></div>
-      <div class="bb" style="width:120px; height:120px; right:8%; bottom:30px; opacity:.15"></div>
-
-      <div class="in" style="flex-direction:column; text-align:center">
-        <h2 class="t hand">THANK YOU</h2>
-        <!-- EDIT TEXT -->
-        <p>for being you. Happy Birthday, <span id="nm2"></span>.</p>
-      </div>
-
-    </section>
-
-  </main>
+</main>
 
 
-  <!-- scripts: config.js must load before script.js -->
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+
+<!-- =====================================================
+     ⚙️ JAVASCRIPT CONFIGURATION
+===================================================== -->
+
+<script src="config.js"></script>
+
+
+<!-- =====================================================
+     🚀 MAIN JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
 
 </body>
-
 </html>
+```
