@@ -1,44 +1,659 @@
-:root{--blue:#a9c3e6;--sky:#bcd0ea;--cream:#f4f1e0;--slate:#4f6479;--ink:#33465e;--pop:#4a76c9;--sun:#ffe27a;--ph:#dfe7f2;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--sky);color:var(--ink);font-family:Nunito,system-ui,sans-serif;overflow-x:hidden}
-.hand{font-family:Gaegu,cursive;font-weight:700}
-.bb{position:absolute;border-radius:50%;background:var(--cream);opacity:.6;pointer-events:none}
-#lock{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;position:relative;overflow:hidden}
-.card{position:relative;z-index:1;background:var(--cream);border:6px solid var(--pop);border-radius:30px;padding:28px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:360px;box-sizing:border-box}
-.smile{width:90px;height:90px;border-radius:50%;background:var(--sun);border:4px solid var(--ink);position:relative;flex:none}
-.smile i{position:absolute;top:32px;width:9px;height:14px;border-radius:5px;background:var(--ink)}
-.smile i:nth-child(1){left:26px}.smile i:nth-child(2){right:26px}
-.smile b{position:absolute;left:26px;right:26px;bottom:20px;height:15px;border:4px solid var(--ink);border-top:0;border-radius:0 0 20px 20px}
-h1{font-size:clamp(46px,14vw,70px);line-height:.9;margin:0;color:var(--pop)}
-.sub{margin:0;font-size:16px}
-.dob{display:flex;gap:8px;align-items:center}
-.dob label{display:flex;flex-direction:column;font-size:12px;font-weight:800;gap:4px}
-input{height:54px;border-radius:27px;border:3px solid var(--ink);background:#fff;color:var(--ink);text-align:center;font:700 26px Gaegu,cursive;box-sizing:border-box}
-#dd,#mm{width:64px}#yy{width:96px}
-button{min-height:48px;padding:0 38px;border-radius:24px;border:0;background:var(--slate);color:var(--cream);font:800 16px Nunito,sans-serif;cursor:pointer}
-.msg{min-height:20px;font-size:14px;font-weight:800;color:var(--pop)}
-.shake{animation:sh .5s}
-@keyframes sh{20%{transform:rotate(-4deg)}40%{transform:rotate(4deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(3deg)}}
-#site{display:none}
-.slide{position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center;justify-content:center;padding:56px 22px;box-sizing:border-box}
-.in{position:relative;z-index:1;max-width:860px;width:100%;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:center}
-.in>*{flex:1 1 280px}
-.s1{background:var(--blue)}.s2{background:var(--cream)}.s3{background:var(--slate);color:var(--cream)}
-.s4{background:var(--blue)}.s5{background:var(--slate);color:var(--cream)}.s6{background:var(--cream)}.s7{background:var(--blue)}
-.t{font-size:clamp(46px,11vw,84px);line-height:.92;margin:0}
-.s1 .t,.s4 .t,.s7 .t{color:var(--cream)}.s2 .t,.s6 .t{color:var(--pop)}
-p{font-size:17px;line-height:1.55;margin:12px 0 0}
-.ph{background:var(--ph);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:14px;text-align:center;aspect-ratio:1;border:4px solid var(--cream)}
-.ph .e{font-size:clamp(56px,16vw,120px);line-height:1}.ph.sm .e{font-size:clamp(40px,9vw,64px)}.lb{font:700 20px Gaegu,cursive;margin-top:4px}.meme{flex-direction:column;justify-content:space-between;padding:10px;font-weight:800}.meme .e{font-size:clamp(40px,10vw,64px)}.mt{font-size:13px;line-height:1.1;text-transform:uppercase;color:#fff;text-shadow:-1px -1px 0 #33465e,1px -1px 0 #33465e,-1px 1px 0 #33465e,1px 1px 0 #33465e}.ph.cart{background:#ffe6ef}.r{border-radius:24px}.c{border-radius:50%}.arch{border-radius:999px 999px 24px 24px;aspect-ratio:3/4}
-.age{width:min(280px,70vw);aspect-ratio:1;border-radius:50%;background:var(--blue);border:5px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto}
-.age .n{font-size:110px;line-height:1;color:var(--cream)}
-.wl{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.wl div{font-size:17px}.wl .hand{font-size:26px;display:block}
-.q{font-size:clamp(26px,6vw,40px);line-height:1.15;text-align:center}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;flex:1 1 100%}
-.g4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pop{position:fixed;z-index:9;border-radius:50%;background:var(--cream);border:3px solid var(--pop);animation:up 2.4s ease-out forwards}
-@keyframes up{to{transform:translateY(-110vh) scale(1.3);opacity:.2}}
-.ph{position:relative;overflow:hidden}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+
+/* =========================================================
+   🎨 1. COLORS & GLOBAL VARIABLES
+========================================================= */
+
+:root {
+    --blue: #a9c3e6;
+    --sky: #bcd0ea;
+    --cream: #f4f1e0;
+    --slate: #4f6479;
+    --ink: #33465e;
+    --pop: #4a76c9;
+    --sun: #ffe27a;
+    --ph: #dfe7f2;
+}
+
+
+/* =========================================================
+   📦 2. GLOBAL BOX SIZING & SAFE AREA
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* =========================================================
+   🌐 3. HTML & BODY
+========================================================= */
+
+html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: Nunito, system-ui, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ✍️ 4. HANDWRITTEN FONT
+========================================================= */
+
+.hand {
+    font-family: Gaegu, cursive;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   🔵 5. DECORATIVE BUBBLES
+========================================================= */
+
+.bb {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--cream);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   🔐 6. LOCK / BIRTHDAY ENTRY SCREEN
+========================================================= */
+
+#lock {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ---------- Lock Card ---------- */
+
+.card {
+    position: relative;
+    z-index: 1;
+
+    background: var(--cream);
+    border: 6px solid var(--pop);
+    border-radius: 30px;
+
+    padding: 28px 22px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+
+    width: 100%;
+    max-width: 360px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+    7.LOCK SCREEN  PENGUIN
+========================================================= */
+
+
+.lock-photo {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 4px solid var(--pop);
+
+    background: var(--blue);
+
+    flex: none;
+}
+
+.lock-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================================
+   🎂 8. LOCK SCREEN TEXT
+========================================================= */
+
+h1 {
+    font-size: clamp(46px, 14vw, 70px);
+    line-height: 0.9;
+
+    margin: 0;
+
+    color: var(--pop);
+}
+
+
+.sub {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   📅 9. DATE OF BIRTH INPUT
+========================================================= */
+
+.dob {
+    display: flex;
+    gap: 8px;
+
+    align-items: center;
+}
+
+
+.dob label {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    gap: 4px;
+}
+
+
+/* ---------- Input Fields ---------- */
+
+input {
+    height: 54px;
+
+    border-radius: 27px;
+    border: 3px solid var(--ink);
+
+    background: #fff;
+    color: var(--ink);
+
+    text-align: center;
+
+    font: 700 26px Gaegu, cursive;
+
+    box-sizing: border-box;
+}
+
+
+#dd,
+#mm {
+    width: 64px;
+}
+
+
+#yy {
+    width: 96px;
+}
+
+
+/* =========================================================
+   🔘 10. OPEN BUTTON
+========================================================= */
+
+button {
+    min-height: 48px;
+
+    padding: 0 38px;
+
+    border-radius: 24px;
+    border: 0;
+
+    background: var(--slate);
+    color: var(--cream);
+
+    font: 800 16px Nunito, sans-serif;
+
+    cursor: pointer;
+}
+
+
+/* ---------- Message ---------- */
+
+.msg {
+    min-height: 20px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    color: var(--pop);
+}
+
+
+/* =========================================================
+   🫨 11. SHAKE ANIMATION
+========================================================= */
+
+.shake {
+    animation: sh 0.5s;
+}
+
+
+@keyframes sh {
+
+    20% {
+        transform: rotate(-4deg);
+    }
+
+    40% {
+        transform: rotate(4deg);
+    }
+
+    60% {
+        transform: rotate(-3deg);
+    }
+
+    80% {
+        transform: rotate(3deg);
+    }
+
+}
+
+
+/* =========================================================
+   🎉 12. MAIN WEBSITE
+========================================================= */
+
+#site {
+    display: none;
+}
+
+
+/* =========================================================
+   📖 13. SLIDES / SECTIONS
+========================================================= */
+
+.slide {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 92vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 56px 22px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   📦 14. INNER CONTENT CONTAINER
+========================================================= */
+
+.in {
+    position: relative;
+    z-index: 1;
+
+    max-width: 860px;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 28px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.in > * {
+    flex: 1 1 280px;
+}
+
+
+/* =========================================================
+   🎨 15. SECTION COLORS
+========================================================= */
+
+.s1 {
+    background: var(--blue);
+}
+
+
+.s2 {
+    background: var(--cream);
+}
+
+
+.s3 {
+    background: var(--slate);
+    color: var(--cream);
+}
+
+
+.s4 {
+    background: var(--blue);
+}
+
+
+.s5 {
+    background: var(--slate);
+    color: var(--cream);
+}
+
+
+.s6 {
+    background: var(--cream);
+}
+
+
+.s7 {
+    background: var(--blue);
+}
+
+
+/* =========================================================
+   📝 16. SECTION HEADINGS
+========================================================= */
+
+.t {
+    font-size: clamp(46px, 11vw, 84px);
+    line-height: 0.92;
+
+    margin: 0;
+}
+
+
+/* Light headings */
+
+.s1 .t,
+.s4 .t,
+.s7 .t {
+    color: var(--cream);
+}
+
+
+/* Blue headings */
+
+.s2 .t,
+.s6 .t {
+    color: var(--pop);
+}
+
+
+/* =========================================================
+   📄 17. PARAGRAPHS
+========================================================= */
+
+p {
+    font-size: 17px;
+    line-height: 1.55;
+
+    margin: 12px 0 0;
+}
+
+
+/* =========================================================
+   📸 18. PHOTO / CARD COMPONENT
+========================================================= */
+
+.ph {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--ph);
+    color: var(--ink);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    aspect-ratio: 1;
+
+    border: 4px solid var(--cream);
+}
+
+
+/* =========================================================
+   🖼️ 19. PHOTOS
+========================================================= */
+
+.ph img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   🎭 20. EMOJI / PHOTO LABELS
+========================================================= */
+
+.ph .e {
+    font-size: clamp(56px, 16vw, 120px);
+    line-height: 1;
+}
+
+
+.ph.sm .e {
+    font-size: clamp(40px, 9vw, 64px);
+}
+
+
+.lb {
+    font: 700 20px Gaegu, cursive;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   😂 21. MEME CARDS
+========================================================= */
+
+.meme {
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 10px;
+
+    font-weight: 800;
+}
+
+
+.meme .e {
+    font-size: clamp(40px, 10vw, 64px);
+}
+
+
+.mt {
+    font-size: 13px;
+
+    line-height: 1.1;
+
+    text-transform: uppercase;
+
+    color: #fff;
+
+    text-shadow:
+        -1px -1px 0 #33465e,
+         1px -1px 0 #33465e,
+        -1px  1px 0 #33465e,
+         1px  1px 0 #33465e;
+}
+
+
+/* =========================================================
+   🌸 22. PHOTO CARD VARIATIONS
+========================================================= */
+
+.ph.cart {
+    background: #ffe6ef;
+}
+
+
+/* Rounded rectangle */
+
+.r {
+    border-radius: 24px;
+}
+
+
+/* Circle */
+
+.c {
+    border-radius: 50%;
+}
+
+
+/* Arch */
+
+.arch {
+    border-radius: 999px 999px 35px 35px;
+    aspect-ratio: 3 / 4;
+}
+
+
+/* ==========================*
+
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  .slide {
+    width: 100%;
+    min-height: 100svh;
+    padding: 20px 16px;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  p {
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  /* Photo grids */
+  .g4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .ph {
+  height: auto;
+  overflow: hidden;
+}
+
+.ph img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+  .birthday-photo {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Wishlist and content rows */
+  .row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Birthday photo on the lock screen */
+  .lock-photo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 16px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .lock-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  button {
+    max-width: 100%;
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+
+  input {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .slide {
+    padding: 16px 12px;
+  }
+
+  .g4 {
+    gap: 8px;
+  }
+}
