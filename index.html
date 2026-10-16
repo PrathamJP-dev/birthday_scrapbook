@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Happy Birthday</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nunito:wght@600;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!--
+    HOW TO EDIT THIS FILE
+    ---------------------
+    1. Text: search for the "EDIT TEXT" comments and change the words next to them.
+    2. Photos: put files in the /images folder named photo1.jpg ... photo10.jpg.
+       If a photo file is missing, the emoji / meme card shows instead.
+    3. Name and password (birthdate hash): config.js
+    4. Colours and fonts: style.css
+  -->
+
+
+  <!-- ====================================================== -->
+  <!-- LOCK SCREEN (shown first, asks for the birthdate)      -->
+  <!-- ====================================================== -->
+  <section id="lock">
+
+    <!-- decorative bubbles -->
+    <div class="bb" style="width:140px; height:140px; left:-40px; top:8%"></div>
+    <div class="bb" style="width:90px; height:90px; right:8%; bottom:10%"></div>
+    <div class="bb" style="width:60px; height:60px; right:12%; top:12%"></div>
+
+    <div class="card" id="box">
+
+      <!-- smiley face (drawn with CSS) -->
+      <div class="smile" aria-hidden="true"><i></i><i></i><b></b></div>
+
+      <!-- EDIT TEXT: lock screen title and hint -->
+      <h1 class="hand">BLUE<br>BIRTHDAY</h1>
+      <p class="sub">Enter your birthdate to open the surprise</p>
+
+      <!-- birthdate inputs (ids dd / mm / yy are used by script.js, don't rename) -->
+      <div class="dob">
+        <label for="dd">Day
+          <input id="dd" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="off">
+        </label>
+        <label for="mm">Month
+          <input id="mm" inputmode="numeric" maxlength="2" placeholder="MM" autocomplete="off">
+        </label>
+        <label for="yy">Year
+          <input id="yy" inputmode="numeric" maxlength="4" placeholder="YYYY" autocomplete="off">
+        </label>
+      </div>
+
+      <button id="go" type="button">Open</button>
+      <div class="msg" id="msg" role="status"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ====================================================== -->
+  <!-- MAIN SITE (hidden until the right birthdate is entered) -->
+  <!-- ====================================================== -->
+  <main id="site">
+
+
+    <!-- ---------- SLIDE 1: Hero (blue) ---------- -->
+    <section class="slide s1">
+
+      <div class="bb" style="width:120px; height:120px; right:-30px; top:30px"></div>
+      <div class="bb" style="width:70px; height:70px; left:6%; bottom:40px"></div>
+
+      <div class="in">
+
+        <div>
+          <h2 class="t hand">BLUE<br>BIRTHDAY</h2>
+          <!-- EDIT TEXT -->
+          <p>Happy Birthday, <b id="nm"></b>! Scroll down, there is a whole little scrapbook made for you.</p>
+        </div>
+
+        <!-- PHOTO 1 -->
+        <div class="ph r" style="aspect-ratio:4/5; flex-direction:column">
+          <span class="e">🎂</span>
+          <span class="lb">🎈 Happy Birthday 🎈</span>
+          <img src="images/photo1.jpg" alt="" onerror="this.remove()">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 2: Age (cream) ---------- -->
+    <section class="slide s2">
+
+      <div class="bb" style="width:100px; height:100px; left:-20px; top:20px; background:var(--blue)"></div>
+
+      <div class="in">
+
+        <!-- big age circle (number is filled in by script.js) -->
+        <div class="age">
+          <div class="n hand" id="age">22</div>
+          <div class="hand" style="font-size:26px; color:var(--ink)">years old</div>
+        </div>
+
+        <div>
+          <!-- "HELLO, TWENTY-TWO" (the age word and caption are filled in by script.js) -->
+          <h2 class="t hand">HELLO,<br><span id="ageword"></span></h2>
+          <p id="cap"></p>
+          <!-- EDIT TEXT: the date line -->
+          <p>Saturday, 17 October 2026</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 3: Wishlist (slate) ---------- -->
+    <section class="slide s3">
+
+      <div class="bb" style="width:90px; height:90px; right:6%; top:30px; opacity:.15"></div>
+
+      <div class="in">
+        <div>
+
+          <h2 class="t hand">WISHLIST</h2>
+
+          <!-- EDIT TEXT: 4 wishes. Big handwritten line = the wish, plain text after it = small note -->
+          <div class="wl" style="margin-top:20px">
+            <div><span class="hand">A giant cake</span>with extra frosting</div>
+            <div><span class="hand">Endless snacks</span>and zero diets today</div>
+            <div><span class="hand">Good vibes only</span>and loud laughter</div>
+            <div><span class="hand">A day off from adulting</span>cartoons and chill</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 4: Note (blue) ---------- -->
+    <section class="slide s4">
+
+      <div class="bb" style="width:110px; height:110px; right:-20px; bottom:30px"></div>
+
+      <div class="in">
+
+        <!-- PHOTO 2 (arch shape) -->
+        <div class="ph arch cart" style="max-width:300px; flex-direction:column">
+          <span class="e">🐻</span>
+          <span class="lb">"Happy bday, Nidhi!"</span>
+          <span style="font-size:40px">🎁🎈</span>
+          <img src="images/photo2.jpg" alt="" onerror="this.remove()">
+        </div>
+
+        <div>
+          <h2 class="t hand">A NOTE<br>FOR YOU</h2>
+          <!-- EDIT TEXT: your personal message -->
+          <p>Another year, another excuse to eat cake. Wishing you laughter, great food and everything you are hoping for this year.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 5: Quote (slate) ---------- -->
+    <section class="slide s5">
+      <div class="in" style="flex-direction:column">
+
+        <!-- PHOTO 3 (round) -->
+        <div class="ph c" style="width:200px; flex:none">
+          <span class="e">🥳</span>
+          <img src="images/photo3.jpg" alt="" onerror="this.remove()">
+        </div>
+
+        <!-- EDIT TEXT: quote -->
+        <div class="q hand">"Today is your day. Eat the cake first."</div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 6: Row of three photos (cream) ---------- -->
+    <section class="slide s6">
+      <div class="in">
+
+        <h2 class="t hand" style="flex:1 1 100%; text-align:center">BLUE BIRTHDAY</h2>
+
+        <div class="row">
+
+          <!-- PHOTO 4 -->
+          <div class="ph r sm" style="flex-direction:column">
+            <span class="e">🍰</span>
+            <span class="lb">the slice</span>
+            <img src="images/photo4.jpg" alt="" onerror="this.remove()">
+          </div>
+
+          <!-- PHOTO 5 -->
+          <div class="ph r sm" style="flex-direction:column">
+            <span class="e">🧁</span>
+            <span class="lb">the cupcake</span>
+            <img src="images/photo5.jpg" alt="" onerror="this.remove()">
+          </div>
+
+          <!-- PHOTO 6 -->
+          <div class="ph r sm" style="flex-direction:column">
+            <span class="e">🎂</span>
+            <span class="lb">the big one</span>
+            <img src="images/photo6.jpg" alt="" onerror="this.remove()">
+          </div>
+
+        </div>
+
+        <!-- EDIT TEXT: caption under the row -->
+        <p style="flex:1 1 100%; text-align:center">Cake, cake and more cake.</p>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 7: 2x2 grid of memes / photos (blue) ---------- -->
+    <section class="slide s7">
+
+      <div class="bb" style="width:100px; height:100px; left:-20px; top:30px"></div>
+
+      <div class="in">
+
+        <div class="g4">
+
+          <!-- PHOTO 7 (meme: top text, emoji, bottom text) -->
+          <div class="ph r meme">
+            <span class="mt">Me: it's my birthday</span>
+            <span class="e">😋</span>
+            <span class="mt">Also me: cake first</span>
+            <img src="images/photo7.jpg" alt="" onerror="this.remove()">
+          </div>
+
+          <!-- PHOTO 8 -->
+          <div class="ph r meme">
+            <span class="mt">New age unlocked</span>
+            <span class="e">🔓</span>
+            <span class="mt">Level 22 begins</span>
+            <img src="images/photo8.jpg" alt="" onerror="this.remove()">
+          </div>
+
+          <!-- PHOTO 9 -->
+          <div class="ph r meme">
+            <span class="mt">Nidhi: I'm still 12</span>
+            <span class="e">😏</span>
+            <span class="mt">The calendar: 22</span>
+            <img src="images/photo9.jpg" alt="" onerror="this.remove()">
+          </div>
+
+          <!-- PHOTO 10 (cartoon) -->
+          <div class="ph r cart" style="flex-direction:column">
+            <span class="e">🐰</span>
+            <span class="lb">"More cake pls!"</span>
+            <img src="images/photo10.jpg" alt="" onerror="this.remove()">
+          </div>
+
+        </div>
+
+        <div>
+          <h2 class="t hand">MEMORIES</h2>
+          <!-- EDIT TEXT -->
+          <p>Memes, cartoons and cake: the only memories that really matter.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---------- SLIDE 8: Thank you (slate) ---------- -->
+    <section class="slide s3" style="min-height:70vh">
+
+      <div class="bb" style="width:80px; height:80px; left:10%; top:40px; opacity:.15"></div>
+      <div class="bb" style="width:120px; height:120px; right:8%; bottom:30px; opacity:.15"></div>
+
+      <div class="in" style="flex-direction:column; text-align:center">
+        <h2 class="t hand">THANK YOU</h2>
+        <!-- EDIT TEXT -->
+        <p>for being you. Happy Birthday, <span id="nm2"></span>.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- scripts: config.js must load before script.js -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
